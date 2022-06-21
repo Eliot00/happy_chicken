@@ -1,0 +1,28 @@
+[package]
+name = "backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[workspace]
+members = ["entity", "migration"]
+
+[dependencies]
+axum = "0.5.8"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.68"
+tokio = { version = "1.0", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3.11", features = ["env-filter"] }
+dotenv = "0.15.0"
+entity = { path = "./entity" }
+migration = { path = "./migration" }
+
+
+[dependencies.sea-orm]
+version = "^0.8.0"
+features = [
+  "debug-print",
+  "runtime-tokio-native-tls",
+  "sqlx-postgres",
+]
